@@ -8,75 +8,18 @@
   </head>
   <body>
     <h1>
-      <span id="minutes"> 00</span>: <span id="sec">00</span> :
-      <span id="millisec">00</span>
+      <span id="minutes">00</span>:<span id="sec">00</span>:<span id="millisec"
+        >00</span
+      >
     </h1>
 
     <br /><br />
 
-    <button id="start">START</button>
-    <button id="stop" disabled>STOP</button>
-    <button id="reset" disabled>RESET</button>
-
-    <script>
-      const startButton = document.querySelector("#start");
-      const stopButton = document.querySelector("#stop");
-      const resetButton = document.querySelector("#reset");
-
-      const minutesDisplay = document.querySelector("#minutes");
-      const secDisplay = document.querySelector("#sec");
-      const millisecDisplay = document.querySelector("#millisec");
-
-      let interval;
-      let prev = 0; // last time we stopped 
-      let lapse = 0; // first time clicking
-
-      startButton.onclick = () => {
-        stopButton.disabled = false;
-        resetButton.disabled = false;
-        startButton.disabled = true;
-        const startDate = new Date();
-
-        interval = setInterval(() => {
-          let differenceDisplay = null;
-          differenceDisplay = new Date() - startDate;
-          lapse = prev + (new Date() - startDate);
-
-          minutesDisplay.innerHTML = (
-            "0" + Math.floor(lapse / (60 * 1000))
-          ).slice(-4);
-
-          secDisplay.innerHTML = (
-            "0" +
-            (Math.floor(lapse / 1000) % 60)
-          ).slice(-2);
-
-          millisecDisplay.innerHTML = (
-            Math.floor((lapse % 1000) / 10) + "0"
-          ).slice(0, 2);
-        }, 10);
-        
-      };
-
-      stopButton.onclick = () => {
-        startButton.innerHTML = "RESUME";
-        prev = lapse;
-        startButton.disabled = false;
-        clearInterval(interval);
-      };
-
-      resetButton.onclick = () => {
-        resetButton.disabled = true;
-        stopButton.disabled = true;
-        startButton.innerHTML = "START";
-        clearInterval(interval);
-        lapse = 0;
-        prev = 0;
-        startButton.disabled = false;
-        minutesDisplay.innerHTML = "00";
-        secDisplay.innerHTML = "00";
-        millisecDisplay.innerHTML = "00";
-      };
-    </script>
+    <div>
+      <button id="start">START</button>
+      <button id="stop" disabled>STOP</button>
+      <button id="reset" disabled>RESET</button>
+    </div>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
