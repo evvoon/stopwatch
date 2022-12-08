@@ -44,5 +44,5 @@ resetButton.onclick = () => {
   startButton.disabled = false;
   minutesDisplay.innerHTML = "00";
   secDisplay.innerHTML = "00";
-  millisecDisplay.innerHTML = "00";
+  millisecDisplay.innerHTML = "0";
 };
