@@ -17,21 +17,14 @@ startButton.onclick = () => {
   const startDate = new Date();
 
   interval = setInterval(() => {
-    let differenceDisplay = null;
-    differenceDisplay = new Date() - startDate;
     lapse = prev + (new Date() - startDate);
 
-    minutesDisplay.innerHTML = ("0" + Math.floor(lapse / (60 * 1000))).slice(
-      -4
-    );
+    let minutes = ("0" + Math.floor(lapse / (60 * 1000))).slice(-4);
 
+    minutesDisplay.innerHTML = minutes.length === 1 ? `0${minutes}` : minutes;
     secDisplay.innerHTML = ("0" + (Math.floor(lapse / 1000) % 60)).slice(-2);
-
-    millisecDisplay.innerHTML = (Math.floor((lapse % 1000) / 10) + "0").slice(
-      0,
-      2
-    );
-  }, 10);
+    millisecDisplay.innerHTML = Math.floor((lapse % 1000) / 100);
+  }, 50);
 };
 
 stopButton.onclick = () => {
